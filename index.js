@@ -11,6 +11,18 @@ const tutorials = [
   'what is JSONP?'
 ];
 
-const titleCased = () => {
-  return tutorials
+
+function titleCased() {
+  return tutorials.map((titleElement) => {
+    const wordsArray = titleElement.split(' ');           //split the 'tutorials' array into individual word strings
+    const secondIterator = wordsArray.map((word) => {     //creates variable to map through individiual array of words ** you are already inside the 'tutorials' array!! no need to repeatd the first .map again!
+      let firstLetter = word[0].toUpperCase();            // upper case first letter of word
+      let wordRemaining = word.slice(1);                  //grab the reamining letters in each word
+      return firstLetter + wordRemaining;                 // return and join the firstLetter and wordRemaining
+    });
+    const finalArray = secondIterator.join(' ');
+    return finalArray;
+  });
 }
+
+console.log(titleCased());
